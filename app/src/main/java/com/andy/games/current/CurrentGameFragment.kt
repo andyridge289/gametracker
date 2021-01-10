@@ -6,27 +6,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.andy.games.R
+import com.andy.games.databinding.CurrentGameFragmentBinding
 
 class CurrentGameFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CurrentGameFragment()
-    }
-
-    private lateinit var viewModel: CurrentGameViewModel
+    private val vm: CurrentGameViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.current_game_fragment, container, false)
+    ): View {
+
+        val binding = CurrentGameFragmentBinding.inflate(layoutInflater, container, false)
+
+        val nav = findNavController()
+
+        binding.fab.setOnClickListener {
+            val action = CurrentGameFragmentDirections.actionCurrentGameFragmentToAddGameFragment()
+            nav.navigate(action)
+        }
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CurrentGameViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

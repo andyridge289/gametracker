@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
         app:startDestination="@id/currentGameFragment">
 
 
@@ -29,7 +28,7 @@
     </fragment>
     <fragment
             android:id="@+id/addGameFragment"
-            android:name="com.andy.games.AddGameFragment"
+            android:name="com.andy.games.add.AddGameFragment"
             android:label="add_game_fragment"
             tools:layout="@layout/add_game_fragment" />
 </navigation>
