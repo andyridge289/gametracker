@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        app:startDestination="@id/currentGameFragment">
+
+
+    <fragment
+            android:id="@+id/currentGameFragment"
+            android:name="com.andy.games.current.CurrentGameFragment"
+            android:label="current_game_fragment"
+            tools:layout="@layout/current_game_fragment" >
+        <action
+                android:id="@+id/action_currentGameFragment_to_gameListFragment"
+                app:destination="@id/gameListFragment" />
+        <action
+                android:id="@+id/action_currentGameFragment_to_addGameFragment"
+                app:destination="@id/addGameFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/gameListFragment"
+            android:name="com.andy.games.list.GameListFragment"
+            android:label="fragment_game_list_list"
+            tools:layout="@layout/fragment_game_list_list" >
+        <action
+                android:id="@+id/action_gameListFragment_to_addGameFragment"
+                app:destination="@id/addGameFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/addGameFragment"
+            android:name="com.andy.games.AddGameFragment"
+            android:label="add_game_fragment"
+            tools:layout="@layout/add_game_fragment" />
+</navigation>
