@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Update
-import com.andy.games.models.Game
+import com.andy.games.models.game.Game
 
 @Dao
 interface GameDao {

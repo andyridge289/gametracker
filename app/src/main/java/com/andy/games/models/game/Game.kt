@@ -1,4 +1,4 @@
-package com.andy.games.models
+package com.andy.games.models.game
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
