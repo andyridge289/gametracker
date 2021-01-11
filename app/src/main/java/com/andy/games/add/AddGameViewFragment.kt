@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.andy.games.databinding.AddGameViewFragmentBinding
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +30,11 @@ class AddGameViewFragment : Fragment() {
             image?.let{
                 Glide.with(this).load(it).into(binding.imageView)
             }
+        }
+
+        binding.addButton.setOnClickListener {
+            vm.add()
+            findNavController().popBackStack()
         }
 
         return binding.root
