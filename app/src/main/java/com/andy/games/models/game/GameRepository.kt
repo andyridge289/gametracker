@@ -20,6 +20,6 @@ class GameRepository @Inject constructor(
         val updated = game.copy(
             tidyup = true
         )
-        gameDao.insert(game)
+        gameDao.insert(updated)
     }
 }
