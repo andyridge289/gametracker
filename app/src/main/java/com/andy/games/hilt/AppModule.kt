@@ -1,7 +1,9 @@
 package com.andy.games.hilt
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Room
+import com.andy.games.room.CurrentGameDao
 import com.andy.games.room.DB
 import com.andy.games.room.GameDao
 import dagger.Module
@@ -28,5 +30,17 @@ object AppModule {
     @Provides
     fun provideGameDao(db: DB): GameDao {
         return db.gameDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideCurrentGameDao(db: DB): CurrentGameDao {
+        return db.currentGameDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideSharedPrefs(@ApplicationContext appContext: Context): SharedPreferences {
+        return appContext.getSharedPreferences("default", Context.MODE_PRIVATE)
     }
 }

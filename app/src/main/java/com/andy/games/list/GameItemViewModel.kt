@@ -44,5 +44,11 @@ class GameItemViewModel @ViewModelInject constructor(
         }
     }
 
+    fun setCurrent() {
+        viewModelScope.launch {
+            gameRepository.setCurrentGame(selectedGame.value!!)
+        }
+    }
+
 
 }

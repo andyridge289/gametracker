@@ -19,6 +19,9 @@ interface GameDao {
     @Query("SELECT * FROM game WHERE tidyup = 0")
     fun getUnfinished(): LiveData<List<Game>>
 
+    @Query("SELECT * FROM game WHERE rawg_id = :id")
+    fun getGame(id: Int): LiveData<Game>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(game: Game)
 }
