@@ -8,7 +8,7 @@ import com.andy.games.models.game.Game
     entities = arrayOf(
         Game::class
     ),
-    version = 2
+    version = 3
 )
 abstract class DB: RoomDatabase() {
     abstract fun gameDao(): GameDao

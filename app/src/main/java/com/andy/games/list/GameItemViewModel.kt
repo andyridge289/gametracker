@@ -28,4 +28,21 @@ class GameItemViewModel @ViewModelInject constructor(
     }
 
 
+    val finished = MediatorLiveData<Boolean>().apply {
+        value = false
+
+        addSource(selectedGame) {
+            postValue(it.tidyup)
+        }
+    }
+
+    fun setFinished(value: Boolean) {
+        viewModelScope.launch {
+            if (value) {
+                gameRepository.finishGame(selectedGame.value!!)
+            }
+        }
+    }
+
+
 }

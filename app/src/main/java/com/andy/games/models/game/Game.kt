@@ -10,9 +10,8 @@ import com.google.gson.annotations.SerializedName
 data class Game(
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "tidyup") val tidyup: Boolean,
-    @ColumnInfo(name = "rawg_id") val rawgId: Int,
+    @PrimaryKey @ColumnInfo(name = "rawg_id") val rawgId: Int,
     @SerializedName("background_image") val backgroundImage: String?,
 ) {
 
-    @PrimaryKey(autoGenerate = true) var id: Int = 0
 }

@@ -32,6 +32,10 @@ class GameItemFragment : Fragment() {
             }
         }
 
+        binding.finishedSwitch.setOnCheckedChangeListener { _, value ->
+            vm.setFinished(value)
+        }
+
         return binding.root
     }
 }
