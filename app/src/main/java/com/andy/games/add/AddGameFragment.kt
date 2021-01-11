@@ -18,7 +18,7 @@ class AddGameFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding = AddGameFragmentBinding.inflate(layoutInflater, container, false)
 
@@ -29,6 +29,10 @@ class AddGameFragment : Fragment() {
             text?.let {
                 vm.text = it.toString()
             }
+        }
+
+        vm.results.observe(viewLifecycleOwner) {
+            binding.recycler.adapter = GameAddItemAdapter(it)
         }
 
         return binding.root

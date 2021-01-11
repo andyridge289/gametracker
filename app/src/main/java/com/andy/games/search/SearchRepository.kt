@@ -1,10 +1,12 @@
 package com.andy.games.search
 
+import com.andy.games.models.api.SearchResponse
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -27,15 +29,15 @@ class SearchRepository @Inject constructor() {
             .build()
     }
 
-    suspend fun search(value: String): String {
+    suspend fun search(value: String): SearchResponse? {
 
         val api: RawgApi = retrofit.create(RawgApi::class.java)
 
         return try {
-            val response = api.getGame(value)
-            response.body()?.string()!!
+            api.getGame(value)
         } catch (e: Throwable) {
-            "SHIT $e"
+            Timber.e("SHIT $e")
+            null
         }
     }
 }
