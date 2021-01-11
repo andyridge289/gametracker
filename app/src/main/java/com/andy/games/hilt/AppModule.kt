@@ -20,6 +20,7 @@ object AppModule {
     fun provideAppDatabase(@ApplicationContext appContext: Context): DB {
         return Room
             .databaseBuilder(appContext, DB::class.java, "GameDB")
+            .fallbackToDestructiveMigration()
             .build()
     }
 

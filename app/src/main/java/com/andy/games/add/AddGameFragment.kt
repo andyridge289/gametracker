@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.andy.games.databinding.AddGameFragmentBinding
+import com.andy.games.models.api.SearchResultGame
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,8 +33,14 @@ class AddGameFragment : Fragment() {
             }
         }
 
+        val click = { item: SearchResultGame ->
+            val action = AddGameFragmentDirections.actionAddGameFragmentToAddGameViewFragment()
+            findNavController().navigate(action)
+            vm.currentGame.value = item
+        }
+
         vm.results.observe(viewLifecycleOwner) {
-            binding.recycler.adapter = GameAddItemAdapter(it)
+            binding.recycler.adapter = GameAddItemAdapter(it, click)
         }
 
         return binding.root

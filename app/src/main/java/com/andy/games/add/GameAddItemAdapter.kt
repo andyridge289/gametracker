@@ -11,7 +11,8 @@ import com.andy.games.databinding.GameAddItemBinding
 import com.andy.games.models.api.SearchResultGame
 
 class GameAddItemAdapter(
-    private val values: List<SearchResultGame>
+    private val values: List<SearchResultGame>,
+    private val onClick: (SearchResultGame) -> Unit
 ) : RecyclerView.Adapter<GameAddItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameAddItemViewHolder {
@@ -25,6 +26,9 @@ class GameAddItemAdapter(
     override fun onBindViewHolder(holder: GameAddItemViewHolder, position: Int) {
         val item = values[position]
         holder.bind(item)
+        holder.itemView.setOnClickListener {
+            onClick(item)
+        }
     }
 
     override fun getItemCount(): Int = values.size

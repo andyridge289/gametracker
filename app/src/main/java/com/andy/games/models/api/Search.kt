@@ -1,6 +1,7 @@
 
 package com.andy.games.models.api
 
+import com.andy.games.models.game.Game
 import com.google.gson.annotations.SerializedName
 
 data class SearchResponse(
@@ -21,7 +22,17 @@ data class SearchResultGame(
     val metacritic: Int,
     @SerializedName("saturated_color") val saturatedColour: String,
     @SerializedName("dominant_color") val dominantColour: String,
-)
+) {
+
+    fun toGame(): Game {
+        return Game(
+            name = name,
+            rawgId = id,
+            backgroundImage = backgroundImage,
+            tidyup = false
+        )
+    }
+}
 
 data class SearchResultPlatform(
     val id: Int,

@@ -10,12 +10,15 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class AddGameViewModel @ViewModelInject constructor(
-    val searchRepository: SearchRepository
+    private val searchRepository: SearchRepository,
+    private val addGameRepository: AddGameRepository,
 ) : ViewModel() {
 
     var text: String = ""
 
     val results = MutableLiveData<List<SearchResultGame>>()
+
+    val currentGame = addGameRepository.currentGame
 
     fun search() {
 
