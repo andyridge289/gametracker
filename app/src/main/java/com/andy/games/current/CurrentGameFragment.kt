@@ -29,6 +29,11 @@ class CurrentGameFragment : Fragment() {
             nav.navigate(action)
         }
 
+        binding.listFab.setOnClickListener {
+            val action = CurrentGameFragmentDirections.actionCurrentGameFragmentToGameListFragment()
+            nav.navigate(action)
+        }
+
         return binding.root
     }
 

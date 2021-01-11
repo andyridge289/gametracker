@@ -1,5 +1,6 @@
 package com.andy.games.models.game
 
+import androidx.lifecycle.MutableLiveData
 import com.andy.games.room.GameDao
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -9,6 +10,9 @@ class GameRepository @Inject constructor(
     private val gameDao: GameDao
 ) {
 
+    val selectedGame = MutableLiveData<Game>()
+
+    val all = gameDao.getAll()
     val unfinished = gameDao.getUnfinished()
     val finished = gameDao.getFinished()
 

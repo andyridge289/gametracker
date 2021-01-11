@@ -3,10 +3,7 @@ package com.andy.games.add
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 
-import com.andy.games.list.PlaceholderContent.PlaceholderItem
-import com.andy.games.databinding.FragmentGameListBinding
 import com.andy.games.databinding.GameAddItemBinding
 import com.andy.games.models.api.SearchResultGame
 

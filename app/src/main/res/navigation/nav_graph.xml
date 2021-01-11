@@ -25,6 +25,9 @@
         <action
                 android:id="@+id/action_gameListFragment_to_addGameFragment"
                 app:destination="@id/addGameFragment" />
+        <action
+                android:id="@+id/action_gameListFragment_to_gameItemFragment"
+                app:destination="@id/gameItemFragment" />
     </fragment>
     <fragment
             android:id="@+id/addGameFragment"
@@ -40,4 +43,8 @@
             android:name="com.andy.games.add.AddGameViewFragment"
             android:label="add_game_view_fragment"
             tools:layout="@layout/add_game_view_fragment" />
+    <fragment
+            android:id="@+id/gameItemFragment"
+            android:name="com.andy.games.list.GameItemFragment"
+            android:label="GameItemFragment" />
 </navigation>
