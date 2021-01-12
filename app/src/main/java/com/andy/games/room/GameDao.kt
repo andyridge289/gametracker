@@ -19,6 +19,15 @@ interface GameDao {
     @Query("SELECT * FROM game WHERE tidyup = 0")
     fun getUnfinished(): LiveData<List<Game>>
 
+    @Query("SELECT * FROM game")
+    suspend fun getAllSync(): List<Game>
+
+    @Query("SELECT * FROM game WHERE tidyup = 1")
+    suspend fun getFinishedSync(): List<Game>
+
+    @Query("SELECT * FROM game WHERE tidyup = 0")
+    suspend fun getUnfinishedSync(): List<Game>
+
     @Query("SELECT * FROM game WHERE rawg_id = :id")
     fun getGame(id: Int): LiveData<Game>
 

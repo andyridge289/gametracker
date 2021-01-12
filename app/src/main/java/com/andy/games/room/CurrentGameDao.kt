@@ -11,9 +11,17 @@ import com.andy.games.models.game.Game
 @Dao
 interface CurrentGameDao {
 
-    @Query("SELECT * FROM current_game ORDER BY time LIMIT 1")
+    data class Tuple(
+        val game_id: Int,
+        val count: Int
+    )
+
+    @Query("SELECT * FROM current_game ORDER BY time DESC LIMIT 1")
     fun getCurrent(): LiveData<CurrentGame?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(game: CurrentGame)
+
+    @Query("SELECT game_id, count(game_id) AS count FROM current_game GROUP BY game_id")
+    suspend fun getSummary(): List<Tuple>
 }

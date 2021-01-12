@@ -41,6 +41,10 @@ class CurrentGameFragment : Fragment() {
             }
         }
 
+        binding.next.setOnClickListener {
+            vm.next()
+        }
+
         return binding.root
     }
 

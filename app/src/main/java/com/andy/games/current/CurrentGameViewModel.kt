@@ -4,7 +4,9 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.andy.games.models.game.GameRepository
+import kotlinx.coroutines.launch
 
 class CurrentGameViewModel @ViewModelInject constructor(
     private val gameRepository: GameRepository,
@@ -25,7 +27,9 @@ class CurrentGameViewModel @ViewModelInject constructor(
     }
 
     fun next() {
-        gameRepository.next()
+        viewModelScope.launch {
+            gameRepository.next()
+        }
     }
 
 }
